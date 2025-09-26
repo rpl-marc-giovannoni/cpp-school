@@ -1,0 +1,45 @@
+FROM roboticsplus/image-cpp:1.7.0-22.04
+
+ARG USER=rpl
+ARG UID=1000
+ARG GID=1000
+
+USER root
+WORKDIR /root
+
+# Switch to bash
+RUN chsh -s /bin/bash "${USER}"
+
+RUN apt-get update &&    \
+    apt-get install -fy  \
+    curl                 \
+    zip                  \
+    pkg-config           \
+    autoconf             \
+    automake             \
+    libtool              \
+    && apt-get clean     \
+    && rm -rf /var/cache/* /var/lib/apt/lists/*
+
+RUN apt-get update &&    \
+    apt-get install -fy  \
+    python3.10           \
+    libpython3.10-dev    \
+    python3-pip          \
+    python3.10-venv      \
+    && apt-get clean     \
+    && rm -rf /var/cache/* /var/lib/apt/lists/*
+
+# Python requirements
+RUN pip install --upgrade pip
+RUN pip install \
+        build==1.2.2 \
+        numpy==2.2.4 \
+        pybind11-stubgen==2.5.3 \
+        pytest==8.3.5 \
+        pytest-cov==6.1.0
+
+USER ${UID}
+WORKDIR /home/${USER}
+
+ENV PATH="${PATH}:/home/${USER}/.local/bin"

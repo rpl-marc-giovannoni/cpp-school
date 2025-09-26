@@ -1,0 +1,68 @@
+{
+  "name": "cpp-school",
+  "dockerComposeFile": ["docker-compose.yml", "docker-compose-dev.yml"],
+  "service": "cpp-school",
+  "runServices": ["cpp-school"],
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/home/rpl/workspace",
+  "overrideCommand": true,
+  "postStartCommand": "",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
+        "vadimcn.vscode-lldb",
+        "cheshirekow.cmake-format",
+        "pbkit.vscode-pbkit",
+        "ryzngard.vscode-header-source",
+        "mikestead.dotenv", // .env support
+        "esbenp.prettier-vscode", // Prettier code formatter
+        "eamodio.gitlens", // IDE Git information
+        "shardulm94.trailing-spaces", // Show trailing spaces
+        "Gruntfuggly.todo-tree", // Highlights TODO comments
+        "vscode-icons-team.vscode-icons", // Better file extension icons
+        "llvm-vs-code-extensions.vscode-clangd", // Intellisense
+        "cschlosser.doxdocgen", // Doxygen
+        "charliermarsh.ruff", // Python linter & formatter
+        "ms-python.mypy-type-checker", // Python type checker
+        "tamasfe.even-better-toml", // .toml support
+        "benjamin-simmonds.pythoncpp-debug" // python-cpp debug helper; simplifies loading of debugging tools and attaching to a process
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[c]": {
+          "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        },
+        "[cpp]": {
+          "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+        },
+        "[cmake]": {
+          "editor.defaultFormatter": "cheshirekow.cmake-format"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[python]": {
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        },
+        "[toml]": {
+          "editor.defaultFormatter": "tamasfe.even-better-toml"
+        },
+        "python.linting.lintOnSave": true,
+        "ruff.lint.enable": true,
+        "python.pythonpath": "/usr/local/bin/python",
+        "python.languageServer": "Pylance",
+        "python.analysis.extracpp-schools": ["~/workspace/build/"],
+        "clangd.path": "/usr/bin/clangd-19"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+services:
+  cpp-school:
+    container_name: cpp-school
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ../:/home/rpl/workspace
+      - ccache:/home/rpl/.ccache
+      - vcpkg-cache:/home/rpl/.cache/vcpkg
+      - pip-cache:/home/rpl/.cache/pip
+    environment:
+      - TZ=Pacific/Auckland
+    working_dir: /home/rpl/workspace
+
+volumes:
+  ccache:
+  vcpkg-cache:
+  pip-cache:

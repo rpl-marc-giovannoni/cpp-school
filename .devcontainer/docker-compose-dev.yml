@@ -1,0 +1,19 @@
+# docker compose file to be merged with docker-compose.yml to create a dev environment
+
+services:
+  cpp-school:
+    volumes:
+      # developer
+      - ~/.ssh:/home/rpl/.ssh
+      - ~/.gitconfig:/home/rpl/.gitconfig
+      # GUI
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev
+      - /dev/shm:/dev/shm
+    environment:
+      # GUI
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    cap_add:
+      # for debugging
+      - SYS_PTRACE
