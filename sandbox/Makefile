@@ -8,3 +8,6 @@ clean:
 
 run:
 	cd build && ./out
+
+leaks:
+	valgrind --leak-check=full ./build/out
