@@ -1,6 +1,6 @@
 {
   "name": "cpp-school",
-  "dockerComposeFile": ["docker-compose.yml", "docker-compose-dev.yml"],
+  "dockerComposeFile": ["docker-compose.yml", "docker-compose-dev.yml"], // "docker-compose-zscaler.yml"
   "service": "cpp-school",
   "runServices": ["cpp-school"],
   "shutdownAction": "stopCompose",

@@ -1,0 +1,13 @@
+# docker compose file to be merged with docker-compose.yml to create a dev environment
+
+services:
+  cpp-school:
+    volumes:
+      # security; ZScaler on user machine
+      - /etc/ssl/certs:/etc/ssl/certs
+      - /usr/local/share/ca-certificates/:/usr/local/share/ca-certificates/
+    environment:
+      # security; Zscaler on user machine
+      - REQUESTS_CA_BUNDLE=/usr/local/share/ca-certificates/cacert.pem
+      - SSL_CERT_FILE=/usr/local/share/ca-certificates/cacert.pem
+      - ca_certificate=/usr/local/share/ca-certificates/cacert.pem
